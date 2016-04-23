@@ -10,10 +10,12 @@ wsdl:
     campaign_management: "https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/CampaignManagementService.svc?singleWsdl"
     customer_management: "https://clientcenter.api.sandbox.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc?singleWsdl"
     reporting: "https://api.sandbox.bingads.microsoft.com/Api/Advertiser/Reporting/V9/ReportingService.svc?singleWsdl"
+    bulk: "https://api.sandbox.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/BulkService.svc?singleWsdl"
   production:
     campaign_management: "https://api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/CampaignManagementService.svc?singleWsdl"
     customer_management: "https://clientcenter.api.bingads.microsoft.com/Api/CustomerManagement/v9/CustomerManagementService.svc?singleWsdl"
     reporting: "https://api.bingads.microsoft.com/Api/Advertiser/Reporting/V9/ReportingService.svc?singleWsdl"
+    bulk: "https://api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v9/BulkService.svc?singleWsdl"
 
 # All major constants are here
 # In general the key and value are the same. Key in snake_case (ruby-like) and value in CamelCase (Bing alike)
@@ -124,7 +126,62 @@ constants:
         spanish: 'ES'
         swedish: 'SV'
         traditional_chinese: 'ZH'
-
+  bulk:
+    data_scope:
+      entity_data: "EntityData"
+      entity_performance_data: "EntityPerformanceData"
+      quality_score_data: "QualityScoreData"
+      bid_suggestion_data: "BidSuggestionsData"
+    entities:
+      campaigns: "Campaigns"
+      ad_groups: "AdGroups"
+      ads: "Ads"
+      keywords: "Keywords"
+      campaign_negative_keywords: "CampaignNegativeKeywords"
+      ad_group_negative_keywords: "AdGroupNegativeKeywords"
+      campaign_targets: "CampaignTargets"
+      ad_group_targets: "AdGroupTargets"
+      campaign_negative_sites: "CampaignNegativeSites"
+      ad_group_negative_sites: "AdGroupNegativeSites"
+      campaign_site_links_ad_extensions: "CampaignSiteLinksAdExtensions"
+      campaign_product_ad_extensions: "CampaignProductAdExtensions"
+      campaign_call_ad_extensions: "CampaignCallAdExtensions"
+      ad_group_product_targets: "AdGroupProductTargets"
+      ad_group_site_links_ad_extensions: "AdGroupSiteLinksAdExtensions"
+      location_ad_extensions: "LocationAdExtensions"
+      call_ad_extensions: "CallAdExtensions"
+      site_links_ad_extensions: "SiteLinksAdExtensions"
+      product_ad_extensions: "ProductAdExtensions"
+      negative_keywords_list: "NegativeKeywordsList"
+      negative_keyword: "NegativeKeyword"
+      campaign_negative_keyword_list: "CampaignNegativeKeywordList"
+    download_file_type:
+      csv: 'Csv'
+      tsv: 'Tsv'
+    request_status_type:
+      completed: 'Completed'
+      completed_with_errors: 'CompletedWithErrors'
+      failed: 'Failed'
+      failed_full_sync_required: "FailedFullSyncRequired"
+      file_uploaded: 'FileUploaded'
+      in_progress: 'InProgress'
+      pending_file_upload: 'PendingFileUpload'
+    response_mode:
+      errors_only: 'ErrorsOnly'
+      errors_and_results: 'ErrorsAndResults'
+    time_periods:
+      today: 'Today'
+      yesterday: 'Yesterday'
+      last_seven_days: 'LastSevenDays'
+      this_week: 'ThisWeek'
+      last_week: 'LastWeek'
+      last_four_weeks: 'LastFourWeeks'
+      this_month: 'ThisMonth'
+      last_month: 'LastMonth'
+      last_three_months: 'LastThreeMonths'
+      last_six_months: 'LastSixMonths'
+      this_year: 'ThisYear'
+      last_year: 'LastYear'
   # Constansts specific for campaign management services
   campaign_management:
     budget_limit_type:
@@ -179,6 +236,11 @@ constants:
       paused: 'Paused'
       deleted: 'Deleted'
       inactive: 'Inactive'
+    match_types:
+      broad: 'Broad'
+      content: 'Content'
+      exact: 'Exact'
+      phrase: 'Phrase'
   # Constants specific for customer management
   customer_management:
     account_life_cycle_statuses:
@@ -187,7 +249,7 @@ constants:
       inactive: "Inactive"
       pause: "Pause"
       pending: "Pending"
-  # Constants specific for reporting services 
+  # Constants specific for reporting services
   reporting:
     format:
       csv: 'Csv'
@@ -226,6 +288,25 @@ constants:
       ad_distribution:
         search: 'Search'
         content: 'Content'
+      ad_type:
+        text: "Text"
+        mobile: "Mobile"
+        image: "Image"
+        rich_media: "RichMedia"
+        local: "Local"
+        third_party_creative: "ThirdPartyCreative"
+        rich_ad: "RichAd"
+        product: "Product"
+      bid_match_type:
+        exact: "Exact"
+        phrase: "Phrase"
+        broad: "Broad"
+        content: "Content"
+      delivered_match_type:
+        exact: "Exact"
+        phrase: "Phrase"
+        broad: "Broad"
+        content: "Content"
       device_os:
         other: 'Other'
         windows: 'Windows'
@@ -353,3 +434,157 @@ constants:
         device_os: "DeviceOS"
         device_type: "DeviceType"
         status: "Status"
+    keyword_performance_report:
+      type: "KeywordPerformanceReportRequest"
+      columns:
+        account_name: "AccountName"
+        account_number: "AccountNumber"
+        account_id: "AccountId"
+        time_period: "TimePeriod"
+        campaign_name: "CampaignName"
+        campaign_id: "CampaignId"
+        ad_group_name: "AdGroupName"
+        ad_group_id: "AdGroupId"
+        keyword: "Keyword"
+        keyword_id: "KeywordId"
+        ad_name: "AdName"
+        ad_id: "AdId"
+        destination_url: "DestinationUrl"
+        current_max_cpc: "CurrentMaxCpc"
+        currency_code: "CurrencyCode"
+        delivered_match_type: "DeliveredMatchType"
+        ad_distribution: "AdDistribution"
+        impressions: "Impressions"
+        clicks: "Clicks"
+        ctr: "Ctr"
+        average_cpc: "AverageCpc"
+        spend: "Spend"
+        average_position: "AveragePosition"
+        conversions: "Conversions"
+        conversion_rate: "ConversionRate"
+        cost_per_conversion: "CostPerConversion"
+        average_cpm: "AverageCpm"
+        pricing_model: "PricingModel"
+        bid_match_type: "BidMatchType"
+        device_type: "DeviceType"
+        quality_score: "QualityScore"
+        keyword_relevance: "KeywordRelevance"
+        landing_page_relevance: "LandingPageRelevance"
+        landing_page_user_experience: "LandingPageUserExperience"
+        language: "Language"
+        historic_quality_score: "HistoricQualityScore"
+        historic_keyword_relevance: "HistoricKeywordRelevance"
+        historic_landing_page_relevance: "HistoricLandingPageRelevance"
+        historic_landing_page_user_experience: "HistoricLandingPageUserExperience"
+        keyword_match_type_id: "KeywordMatchTypeId"
+        quality_impact: "QualityImpact"
+        business_listing_id: "BusinessListingId"
+        business_listing_name: "BusinessListingName"
+        business_category_id: "BusinessCategoryId"
+        business_category_name: "BusinessCategoryName"
+        campaign_status: "CampaignStatus"
+        account_status: "AccountStatus"
+        ad_group_status: "AdGroupStatus"
+        keyword_status: "KeywordStatus"
+        network: "Network"
+        top_vs_other: "TopVsOther"
+        device_os: "DeviceOS"
+        assists: "Assists"
+        extended_cost: "ExtendedCost"
+        revenue: "Revenue"
+        return_on_ad_spend: "ReturnOnAdSpend"
+        cost_per_assist: "CostPerAssist"
+        revenue_per_conversion: "RevenuePerConversion"
+        revenue_per_assist: "RevenuePerAssist"
+      filter:
+        ad_distribution: "AdDistribution"
+        ad_type: "AdType"
+        bid_match_type: "BidMatchType"
+        delivered_match_type: "DeliveredMatchType"
+        device_type: "DeviceType"
+        keyword_relevance: "KeywordRelevance"
+        keywords: "Keywords"
+        landing_page_relevance: "LandingPageRelevance"
+        landing_page_user_experience: "LandingPageUserExperience"
+        language_code: "LanguageCode"
+        quality_score: "QualityScore"
+
+# All data object attribute orderings are here
+orders:
+  campaign_management:
+    ad:
+      - device_preference
+      - editorial_status
+      - forward_compatibility_map
+      - id
+      - status
+      - type
+    ad_group:
+      - ad_distribution
+      - ad_rotation
+      - bidding_model
+      - broad_match_bid
+      - content_match_bid
+      - end_date
+      - exact_match_bid
+      - forward_compatibility_map
+      - id
+      - language
+      - name
+      - network
+      - phrase_match_bid
+      - pricing_model
+      - start_date
+      - status
+    campaign:
+      - budget_type
+      - conversion_tracking_enabled
+      - daily_budget
+      - daylight_saving
+      - description
+      - forward_compatibility_map
+      - id
+      - monthly_budget
+      - name
+      - status
+      - time_zone
+    keyword:
+      - bid
+      - destination_url
+      - editorial_status
+      - forward_compatibility_map
+      - id
+      - match_type
+      - param1
+      - param2
+      - param3
+      - status
+      - text
+    mobile_ad:
+      - business_name
+      - destination_url
+      - display_url
+      - phone_number
+      - text
+      - title
+    product_ad:
+      - promotional_text
+    text_ad:
+      - destination_url
+      - display_url
+      - text
+      - title
+  reporting:
+    report_request:
+      - format
+      - language
+      - report_name
+      - return_only_complete_data
+      - aggregation
+      - columns
+      - filter
+      - max_rows
+      - scope
+      - sort
+      - time
+
