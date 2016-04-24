@@ -70,6 +70,18 @@ module BingAdsApi
 			return campaigns
 		end
 
+    def get_keywords_by_ad_group_id(ad_group_id)
+      response = call(:get_keywords_by_ad_group_id, {ad_group_id: ad_group_id})
+      response_hash = get_response_hash(response, __method__)
+      keywords_hash = response_hash[:keywords][:keyword]
+      keywords_hash = [ keywords_hash ] if keywords_hash.is_a? Hash
+      keywords = keywords_hash.map do |keyword_hash|
+        BingAdsApi::Keyword.new(keyword_hash)
+      end
+      return keywords
+    end
+
+
 
 		# Public : Adds a campaign to the specified account 
 		# 
@@ -139,6 +151,28 @@ module BingAdsApi
 			return get_response_hash(response, __method__)
 			
 		end
+
+
+    def update_keywords(ad_group_id, keywords)
+      kws = []
+      if keywords.is_a? Array
+        kws = keywords.map do |kw|
+          kw.to_hash(:camelcase)
+        end
+      elsif keywords.is_a? BingAdsApi::Keyword
+        kws = keywords.to_hash#(:camelcase)
+      else
+        raise 'keywords must be an array of BingAdsApi::Keyword'
+      end
+      message = {
+        :ad_group_id => ad_group_id,
+        :keywords => { :keyword => kws }
+      }
+      puts message
+      response = call(:update_keywords, message)
+      return get_response_hash(response, __method__)
+    end
+
 
 
 		# Public : Returns all the ad groups that belongs to the 
