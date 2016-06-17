@@ -58,9 +58,9 @@ module BingAdsApi
 		# Returns:: Array of BingAdsApi::Campaign
 		# 
 		# Raises:: exception
-		def get_campaigns_by_account_id(account_id)
+		def get_campaigns_by_account_id(account_id, campaign_types = [ BingAdsApi::CampaignType::SEARCH_AND_CONTENT ])
 			response = call(:get_campaigns_by_account_id, 
-				{account_id: account_id})
+				{account_id: account_id, campaign_type: campaign_types})
 			response_hash = get_response_hash(response, __method__)
 			campaigns_hash = response_hash[:campaigns][:campaign]
       campaigns_hash = [ campaigns_hash ] if campaigns_hash.is_a? Hash
@@ -70,10 +70,12 @@ module BingAdsApi
 			return campaigns
 		end
     
-		def get_campaigns_by_ids(account_id, campaign_ids)
+		def get_campaigns_by_ids(account_id, campaign_ids, campaign_types = [ BingAdsApi::CampaignType::SEARCH_AND_CONTENT ])
 			response = call(:get_campaigns_by_ids, 
 				{account_id: account_id, 
-         campaign_ids: { 'ins1:long' => campaign_ids } })
+         campaign_ids: { 'ins1:long' => campaign_ids },
+         campaign_type: campaign_types,
+      })
 			response_hash = get_response_hash(response, __method__)
 			campaigns_hash = response_hash[:campaigns][:campaign]
       campaigns_hash = [ campaigns_hash ] if campaigns_hash.is_a? Hash
