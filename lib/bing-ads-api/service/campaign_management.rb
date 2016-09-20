@@ -88,7 +88,7 @@ module BingAdsApi
     def get_keywords_by_ad_group_id(ad_group_id)
       response = call(:get_keywords_by_ad_group_id, {ad_group_id: ad_group_id})
       response_hash = get_response_hash(response, __method__)
-      keywords_hash = response_hash[:keywords][:keyword]
+      keywords_hash = response_hash[:keywords][:keyword] || []
       keywords_hash = [ keywords_hash ] if keywords_hash.is_a? Hash
       keywords = keywords_hash.map do |keyword_hash|
         BingAdsApi::Keyword.new(keyword_hash)
