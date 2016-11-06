@@ -26,6 +26,9 @@ module BingAdsApi
 
 		attr_accessor :bid,
 			:destination_url,
+      :final_urls,
+      :tracking_url_template,
+      :url_custom_parameters,
 			:editorial_status,
 			:forward_compatibility_map,
 			:id,
@@ -35,6 +38,31 @@ module BingAdsApi
 			:param3,
 			:status,
 			:text
+
+    def to_hash(keys = :underscore)
+      hash = super(keys)
+
+      if self.final_urls.present?
+        final_urls_key = get_attribute_key('final_urls', keys)
+        hash[final_urls_key] = { "string" => self.final_urls }
+      end
+
+      if self.url_custom_parameters.present?
+        params = self.url_custom_parameters.map do |k, v|
+          kk = get_attribute_key('key', keys)
+          vk = get_attribute_key('value', keys)
+          { kk => k, vk => v }
+        end
+        param_key = get_attribute_key('parameters', keys)
+        custom_param_key = get_attribute_key('custom_parameter', keys)
+        url_custom_parameters_key = get_attribute_key('url_custom_parameters', keys)
+        hash[url_custom_parameters_key] = {
+          param_key => { custom_param_key => params }
+        }
+      end
+
+      hash
+    end
 
 		private
 

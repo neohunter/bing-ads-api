@@ -95,7 +95,8 @@ module BingAdsApi
 			
 				LOGGER.debug "response header:"
 				LOGGER.debug "\t#{response.header}"
-
+        LOGGER.debug "response body:"
+        LOGGER.debug { "\t#{Nokogiri::XML.parse(response.http.body).to_xml}" rescue "--no body--" }
 				LOGGER.info "Operation #{operation.to_s} call success"
 				return response.hash
 			rescue Savon::SOAPFault => error
