@@ -155,6 +155,8 @@ constants:
       negative_keywords_list: "NegativeKeywordsList"
       negative_keyword: "NegativeKeyword"
       campaign_negative_keyword_list: "CampaignNegativeKeywordList"
+      dynamic_search_ads: "DynamicSearchAds"
+      ad_group_dynamic_search_ad_targets: "AdGroupDynamicSearchAdTargets"
     download_file_type:
       csv: 'Csv'
       tsv: 'Tsv'
@@ -230,6 +232,7 @@ constants:
     campaign_type:
       search_and_content: 'SearchAndContent'
       shopping: 'Shopping'
+      dynamic_search_ads: 'DynamicSearchAds'
     keyword_editorial_statuses:
       active: 'Active'
       disapproved: 'Disapproved'

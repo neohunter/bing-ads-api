@@ -64,6 +64,7 @@ module BingAdsApi
 			response_hash = get_response_hash(response, __method__)
 			campaigns_hash = response_hash[:campaigns][:campaign]
       campaigns_hash = [ campaigns_hash ] if campaigns_hash.is_a? Hash
+      campaigns_hash ||= []
       campaigns = campaigns_hash.map do |camp_hash|
 				BingAdsApi::Campaign.new(camp_hash)
 			end

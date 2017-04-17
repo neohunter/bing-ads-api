@@ -34,7 +34,8 @@ module BingAdsApi
 			:monthly_budget,
 			:name,
 			:status,
-			:time_zone
-		
+			:time_zone,
+		  :campaign_type,
+      :native_bid_adjustment
 	end
 end
