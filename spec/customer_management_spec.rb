@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
+require 'pry'
 
 # Author:: jlopezn@neonline.cl
 describe BingAdsApi::CustomerManagement do
@@ -25,6 +26,19 @@ describe BingAdsApi::CustomerManagement do
 		response = service.get_accounts_info
 		expect(response).not_to be_nil
 		expect(response).to be_kind_of(Array)
+	end
+
+	context '#get_account' do
+		it 'should get account information' do
+			service.get_account
+
+
+		end
+		it 'should include country code'
+
+		context 'when account is invalid' do
+			it 'should rise invalid account'
+		end
 	end
 
 end

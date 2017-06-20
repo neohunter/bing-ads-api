@@ -72,6 +72,17 @@ module BingAdsApi
 			return accounts
 		end
 
+		def get_account(account_id = nil, inc_tax_details = true, inc_tax_info = true)
+
+			response = call(:get_account, 
+				{account_id: account_id || self.client_proxy.account_id, 
+				include_tax_details: inc_tax_details,
+				include_tax_information: inc_tax_info})
+
+			response_hash = get_response_hash(response, __method__)
+			response_hash[:account]			
+		end
+
 
 		private
 			def get_service_name
