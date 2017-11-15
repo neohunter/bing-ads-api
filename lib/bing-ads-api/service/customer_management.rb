@@ -2,7 +2,7 @@
 module BingAdsApi
 	
 	def self.namespace
-    :v9
+    :v11
   end
 
 	# Public : This class represents the Customer Management Services 

@@ -17,7 +17,7 @@ module BingAdsApi
 	#  service = BingAdsApi::Reporting.new(options)
 	class Reporting < BingAdsApi::Service
     def self.namespace
-      :v9
+      :v11
     end
 		# Public : Get the status of a report request 
 		# 

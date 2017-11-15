@@ -14,7 +14,7 @@ module BingAdsApi
 		LOGGER = Logger.new(STDOUT)
 
     def self.namespace
-      :v10
+      :v11
     end
 		
 		# Public : Constructor 

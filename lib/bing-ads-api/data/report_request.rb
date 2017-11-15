@@ -26,7 +26,7 @@ module BingAdsApi
 
     # https://msdn.microsoft.com/en-us/library/dn250011.aspx
     # ... use version 9 of the Customer Billing, Customer Management, and Reporting services.
-		NAMESPACE = :v9
+		NAMESPACE = :v11
 
 
 		attr_accessor :format, :language, :report_name, :return_only_complete_data
